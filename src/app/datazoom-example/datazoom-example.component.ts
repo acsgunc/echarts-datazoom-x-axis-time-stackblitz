@@ -38,14 +38,14 @@ export class DatazoomExampleComponent {
     
 
     // Determine the start and end values for the last hour
-    const startValue = 1722778200*1000; //now - 60 * 60; // One hour ago
+    const startValue = now - 60 * 60; // One hour ago
 
-    console.log('startValue', `Time: ${dayjs(new Date(startValue)).format(
+    console.log('startValue', `Time: ${dayjs(new Date(startValue*1000)).format(
       'DD:MM:YYYY:h:mm:ss'
     )}`)
-    const endValue = 1722781800*1000; //now; // Now
+    const endValue =now; // Now
 
-    console.log('endValue', `Time: ${dayjs(new Date(endValue)).format(
+    console.log('endValue', `Time: ${dayjs(new Date(endValue*1000)).format(
       'h:mm:ss'
     )}`)
 
