@@ -14,6 +14,7 @@
     "@angular/forms": "^18.0.0",
     "@angular/platform-browser": "^18.0.0",
     "@angular/router": "^18.0.0",
+    "dayjs": "^1.11.12",
     "echarts": "^5.5.1",
     "ngx-echarts": "^18.0.0",
     "rxjs": "^7.8.1",

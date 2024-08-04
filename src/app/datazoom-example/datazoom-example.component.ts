@@ -3,6 +3,7 @@ import * as echarts from 'echarts';
 import { ECharts, graphic, EChartsOption } from 'echarts';
 import { NgxEchartsDirective, provideEcharts } from 'ngx-echarts';
 import { CommonModule } from '@angular/common';
+import dayjs from "dayjs";
 
 @Component({
   selector: 'app-datazoom-example',
@@ -32,6 +33,8 @@ export class DatazoomExampleComponent {
       data.push([now - (120 - i) * 60, Math.random() * 100]);
     }
 
+    console.log('data', data);
+
     // Determine the start and end values for the last hour
     const startValue = now - 60 * 60; // One hour ago
     const endValue = now; // Now
@@ -44,7 +47,10 @@ export class DatazoomExampleComponent {
         trigger: 'axis',
         formatter: (params: any) => {
           const date = new Date(params[0].value[0] * 1000);
-          return `${date.toLocaleTimeString()}: ${params[0].value[1].toFixed(
+          console.log(date, params[0].value[0])
+          return `Time: ${dayjs(date).format(
+            'h:mm:ss'
+          )}<br/>value: ${params[0].value[1].toFixed(
             2
           )}`;
         },
@@ -53,8 +59,10 @@ export class DatazoomExampleComponent {
         type: 'time',
         axisLabel: {
           formatter: (value: number) => {
-            const date = new Date(value);
-            return date.toLocaleTimeString();
+            const date = new Date(value*1000);
+            return `${dayjs(date).format(
+              'h:mm:ss'
+            )}`;
           },
         },
       },
